@@ -2,8 +2,13 @@
 
 <PageTitle>Index</PageTitle>
 
-<canvas id="pdf-render" 
+<canvas id="pdf-render"
+        class="border"
         @ref="_canvasReference"
         height="@_canvasSize.Height"
         width="@_canvasSize.Width"
-        style="height: @(_canvasSize.Height)px; width: @(_canvasSize.Width)px"></canvas>
+        style="height: @(_canvasSize.Height)px; width: @(_canvasSize.Width)px"
+        @onmousedown="OnMouseDown"
+        @onmouseup="OnMouseUp"
+        @onmousemove="OnMouseMove">
+</canvas>
