@@ -2,13 +2,25 @@
 
 <PageTitle>Index</PageTitle>
 
-<canvas id="pdf-render"
-        class="border"
-        @ref="_canvasReference"
-        height="@_canvasSize.Height"
-        width="@_canvasSize.Width"
-        style="height: @(_canvasSize.Height)px; width: @(_canvasSize.Width)px"
-        @onmousedown="OnMouseDown"
-        @onmouseup="OnMouseUp"
-        @onmousemove="OnMouseMove">
-</canvas>
+<div id="stack"
+     class="border">
+    @* 
+    We stack two canvases to improve performance because we don't need to rerender the PDF all the time.
+    See MDN recommendations: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas#use_multiple_layered_canvases_for_complex_scenes
+*@
+    <canvas id="pdf"
+            height="@_canvasSize.Height"
+            width="@_canvasSize.Width"
+            style="height: @(_canvasSize.Height)px; width: @(_canvasSize.Width)px"
+            @ref="_pdfCanvasReference">
+    </canvas>
+    <canvas id="rectangles"
+            height="@_canvasSize.Height"
+            width="@_canvasSize.Width"
+            style="height: @(_canvasSize.Height)px; width: @(_canvasSize.Width)px"
+            @ref="_rectanglesCanvasReference"
+            @onmousedown="OnMouseDown"
+            @onmouseup="OnMouseUp"
+            @onmousemove="OnMouseMove">
+    </canvas>
+</div>
