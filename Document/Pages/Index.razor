@@ -1,0 +1,9 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<canvas id="pdf-render" 
+        @ref="_canvasReference"
+        height="@_canvasSize.Height"
+        width="@_canvasSize.Width"
+        style="height: @(_canvasSize.Height)px; width: @(_canvasSize.Width)px"></canvas>
